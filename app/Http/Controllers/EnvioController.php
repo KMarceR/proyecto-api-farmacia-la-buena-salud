@@ -15,14 +15,7 @@ class EnvioController extends Controller
     {
         try {
             // Query para consultar Envio
-            $detalles = Envio::select(
-                'envio.id',
-                'envio.venta_id',
-                'envio.estado_envio',
-                'envio.costo_envio',
-                'envio.fecha_entrega',
-                'envio.empleado_id'
-            )->get();
+            $detalles = Envio::with('empleados', 'ventas')->get();
             if ($detalles->count() > 0) {
                 // Si hay Envio se retorna el listado en un json
                 return response()->json([
@@ -101,13 +94,13 @@ class EnvioController extends Controller
                     $detalles->update($request->all());
                     return response()->json([
                         'code' => 200,
-                        'data' => 'Envio actualizada'
+                        'data' => 'Envio actualizado'
                     ], 200);
                 } else {
                     // Si el Envio no existe se devuelve un mensaje
                     return response()->json([
                         'code' => 404,
-                        'data' => 'Envio no encontrada'
+                        'data' => 'Envio no encontrado'
                     ], 404);
                 }
             }
@@ -127,13 +120,13 @@ class EnvioController extends Controller
                 $detalles->delete($id);
                 return response()->json([
                     'code' => 200,
-                    'data' => 'Envio eliminada'
+                    'data' => 'Envio eliminado'
                 ], 200);
             } else {
                 // Si el Envio no existe se devuelve un mensaje
                 return response()->json([
                     'code' => 404,
-                    'data' => 'Envio no encontrada'
+                    'data' => 'Envio no encontrado'
                 ], 404);
             }
         } catch (\Throwable $th) {
@@ -149,15 +142,7 @@ class EnvioController extends Controller
             $detalles = Envio::find($id);
             if ($detalles) {
                 // Si el Envio existe se retornan sus datos  
-                $datos = Envio::select(
-                    'envio.id',
-                    'envio.venta_id',
-                    'envio.estado_envio',
-                    'envio.costo_envio',
-                    'envio.fecha_entrega',
-                    'envio.empleado_id'
-                )
-                    ->where('marcas.id', '=', $id)
+                $datos = Envio::where('id', '=', $id)
                     ->get();
                 return response()->json([
                     'code' => 200,
@@ -167,7 +152,7 @@ class EnvioController extends Controller
                 // Si el Envio no existe se devuelve un mensaje
                 return response()->json([
                     'code' => 404,
-                    'data' => 'Envio no encontrada'
+                    'data' => 'Envio no encontrado'
                 ], 404);
             }
         } catch (\Throwable $th) {

@@ -7,14 +7,14 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ClienteController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\CategoriasController;
+use App\Http\Controllers\DetalleOrdenesPedidoController;
+use App\Http\Controllers\DetalleVentaController;
+use App\Http\Controllers\EnvioController;
+use App\Http\Controllers\OrdenesPedidoController;
 use App\Http\Controllers\ProductosController;
 use App\Http\Controllers\ProveedorController;
-use App\Models\DetalleOrdenesPedido;
-use App\Models\DetalleVenta;
-use App\Models\Envio;
-use App\Models\OrdenesPedido;
-use App\Models\Roles;
-use App\Models\Ventas;
+use App\Http\Controllers\RolesController;
+use App\Http\Controllers\VentasController;
 
 Route::get('/user', function (Request $request) {
     return $request->user();
@@ -51,46 +51,46 @@ Route::middleware('auth:sanctum')->group(function () {
     Route::delete('/proveedor/delete/{id}', [ProveedorController::class, 'delete']);
 
     // Rutas para gestionar la tabla Detalle_Ordenes_Pedido
-    Route::get('/detalle_ordenes_pedido/select', [DetalleOrdenesPedido::class, 'select']);
-    Route::post('/detalle_ordenes_pedido/store', [DetalleOrdenesPedido::class, 'store']);
-    Route::put('/detalle_ordenes_pedido/update/{id}', [DetalleOrdenesPedido::class, 'update']);
-    Route::get('/detalle_ordenes_pedido/find/{id}', [DetalleOrdenesPedido::class, 'find']);
-    Route::delete('/detalle_ordenes_pedido/delete/{id}', [DetalleOrdenesPedido::class, 'delete']);
+    Route::get('/detalle_ordenes_pedido/select', [DetalleOrdenesPedidoController::class, 'select']);
+    Route::post('/detalle_ordenes_pedido/store', [DetalleOrdenesPedidoController::class, 'store']);
+    Route::put('/detalle_ordenes_pedido/update/{id}', [DetalleOrdenesPedidoController::class, 'update']);
+    Route::get('/detalle_ordenes_pedido/find/{id}', [DetalleOrdenesPedidoController::class, 'find']);
+    Route::delete('/detalle_ordenes_pedido/delete/{id}', [DetalleOrdenesPedidoController::class, 'delete']);
 
     // Rutas para gestionar la tabla Detalle_Venta
-    Route::get('/detalle_venta/select', [DetalleVenta::class, 'select']);
-    Route::post('/detalle_venta/store', [DetalleVenta::class, 'store']);
-    Route::put('/detalle_venta/update/{id}', [DetalleVenta::class, 'update']);
-    Route::get('/detalle_venta/find/{id}', [DetalleVenta::class, 'find']);
-    Route::delete('/detalle_venta/delete/{id}', [DetalleVenta::class, 'delete']);
+    Route::get('/detalle_venta/select', [DetalleVentaController::class, 'select']);
+    Route::post('/detalle_venta/store', [DetalleVentaController::class, 'store']);
+    Route::put('/detalle_venta/update/{id}', [DetalleVentaController::class, 'update']);
+    Route::get('/detalle_venta/find/{id}', [DetalleVentaController::class, 'find']);
+    Route::delete('/detalle_venta/delete/{id}', [DetalleVentaController::class, 'delete']);
 
     // Rutas para gestionar la tabla Envio
-    Route::get('/envio/select', [Envio::class, 'select']);
-    Route::post('/envio/store', [Envio::class, 'store']);
-    Route::put('/envio/update/{id}', [Envio::class, 'update']);
-    Route::get('/envio/find/{id}', [Envio::class, 'find']);
-    Route::delete('/envio/delete/{id}', [Envio::class, 'delete']);
+    Route::get('/envio/select', [EnvioController::class, 'select']);
+    Route::post('/envio/store', [EnvioController::class, 'store']);
+    Route::put('/envio/update/{id}', [EnvioController::class, 'update']);
+    Route::get('/envio/find/{id}', [EnvioController::class, 'find']);
+    Route::delete('/envio/delete/{id}', [EnvioController::class, 'delete']);
 
     // Rutas para gestionar la tabla Orden
-    Route::get('/ordenes_pedido/select', [OrdenesPedido::class, 'select']);
-    Route::post('/ordenes_pedido/store', [OrdenesPedido::class, 'store']);
-    Route::put('/ordenes_pedido/update/{id}', [OrdenesPedido::class, 'update']);
-    Route::get('/ordenes_pedido/find/{id}', [OrdenesPedido::class, 'find']);
-    Route::delete('/ordenes_pedido/delete/{id}', [OrdenesPedido::class, 'delete']);
+    Route::get('/ordenes_pedido/select', [OrdenesPedidoController::class, 'select']);
+    Route::post('/ordenes_pedido/store', [OrdenesPedidoController::class, 'store']);
+    Route::put('/ordenes_pedido/update/{id}', [OrdenesPedidoController::class, 'update']);
+    Route::get('/ordenes_pedido/find/{id}', [OrdenesPedidoController::class, 'find']);
+    Route::delete('/ordenes_pedido/delete/{id}', [OrdenesPedidoController::class, 'delete']);
 
     // Rutas para gestionar la tabla Ventas
-    Route::get('/ventas/select', [Ventas::class, 'select']);
-    Route::post('/ventas/store', [Ventas::class, 'store']);
-    Route::put('/ventas/update/{id}', [Ventas::class, 'update']);
-    Route::get('/ventas/find/{id}', [Ventas::class, 'find']);
-    Route::delete('/ventas/delete/{id}', [Ventas::class, 'delete']);
+    Route::get('/ventas/select', [VentasController::class, 'select']);
+    Route::post('/ventas/store', [VentasController::class, 'store']);
+    Route::put('/ventas/update/{id}', [VentasController::class, 'update']);
+    Route::get('/ventas/find/{id}', [VentasController::class, 'find']);
+    Route::delete('/ventas/delete/{id}', [VentasController::class, 'delete']);
 
     // Rutas para gestionar la tabla Roles
-    Route::get('/roles/select', [Roles::class, 'select']);
-    Route::post('/roles/store', [Roles::class, 'store']);
-    Route::put('/roles/update/{id}', [Roles::class, 'update']);
-    Route::get('/roles/find/{id}', [Roles::class, 'find']);
-    Route::delete('/roles/delete/{id}', [Roles::class, 'delete']);
+    Route::get('/roles/select', [RolesController::class, 'select']);
+    Route::post('/roles/store', [RolesController::class, 'store']);
+    Route::put('/roles/update/{id}', [RolesController::class, 'update']);
+    Route::get('/roles/find/{id}', [RolesController::class, 'find']);
+    Route::delete('/roles/delete/{id}', [RolesController::class, 'delete']);
 
 
 
