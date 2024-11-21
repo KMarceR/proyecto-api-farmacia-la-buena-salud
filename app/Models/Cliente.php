@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 class Cliente extends Model
 {
     use HasFactory;
-    protected $table = 'cliente'; // Nombre de la tabla
+    protected $table = 'clientes'; // Nombre de la tabla
     protected $fillable = ['id', 'nombre', 'telefono', 'fk_pais']; // Campos de la tabla
 
 }

@@ -14,11 +14,11 @@ class Envio extends Model
     protected $fillable = ['id', 'venta_id','estado_envio','costo_envio','fecha_entrega','empleado_id','direccion'];
 
     
-    public function ventas():HasOne {
+    public function venta():HasOne {
         return $this->hasOne(Ventas::class,"id","venta_id");
     }
 
-    public function empleados():HasOne {
+    public function empleado():HasOne {
         return $this->hasOne(Empleados::class,"id","empleado_id");
     }
 }

@@ -15,7 +15,7 @@ class EnvioController extends Controller
     {
         try {
             // Query para consultar Envio
-            $detalles = Envio::with('empleados', 'ventas')->get();
+            $detalles = Envio::with('empleado', 'venta.cliente')->get();
             if ($detalles->count() > 0) {
                 // Si hay Envio se retorna el listado en un json
                 return response()->json([
