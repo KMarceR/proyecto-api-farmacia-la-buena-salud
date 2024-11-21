@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:3306
--- Generation Time: Nov 19, 2024 at 03:45 AM
+-- Generation Time: Nov 21, 2024 at 05:32 AM
 -- Server version: 8.0.30
 -- PHP Version: 8.2.24
 
@@ -80,6 +80,13 @@ CREATE TABLE `clientes` (
   `updated_at` timestamp NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
+--
+-- Dumping data for table `clientes`
+--
+
+INSERT INTO `clientes` (`id`, `nombre`, `direccion`, `telefono`, `created_at`, `updated_at`) VALUES
+(1, 'KATSUKI BAKUGO', 'JAPON', '888888888', '2024-11-21 04:11:32', '2024-11-21 04:11:32');
+
 -- --------------------------------------------------------
 
 --
@@ -124,6 +131,13 @@ CREATE TABLE `empleados` (
   `updated_at` timestamp NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
+--
+-- Dumping data for table `empleados`
+--
+
+INSERT INTO `empleados` (`id`, `nombre`, `usuario_id`, `created_at`, `updated_at`) VALUES
+(1, 'IZUKU MIDORIYA', 2, '2024-11-21 04:14:04', '2024-11-21 04:14:04');
+
 -- --------------------------------------------------------
 
 --
@@ -133,7 +147,7 @@ CREATE TABLE `empleados` (
 CREATE TABLE `envio` (
   `id` int NOT NULL,
   `venta_id` int DEFAULT NULL,
-  `estado_envio` int DEFAULT NULL,
+  `estado_envio` varchar(100) DEFAULT NULL,
   `costo_envio` double DEFAULT NULL,
   `fecha_entrega` varchar(255) DEFAULT NULL,
   `empleado_id` int DEFAULT NULL,
@@ -141,6 +155,13 @@ CREATE TABLE `envio` (
   `created_at` timestamp NULL DEFAULT CURRENT_TIMESTAMP,
   `updated_at` timestamp NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+--
+-- Dumping data for table `envio`
+--
+
+INSERT INTO `envio` (`id`, `venta_id`, `estado_envio`, `costo_envio`, `fecha_entrega`, `empleado_id`, `direccion`, `created_at`, `updated_at`) VALUES
+(1, 3, 'PENDIENTE', 30, '21/11/2024', 1, 'JAPON', '2024-11-21 04:22:41', '2024-11-21 05:29:20');
 
 -- --------------------------------------------------------
 
@@ -266,7 +287,32 @@ CREATE TABLE `personal_access_tokens` (
 --
 
 INSERT INTO `personal_access_tokens` (`id`, `tokenable_type`, `tokenable_id`, `name`, `token`, `abilities`, `last_used_at`, `expires_at`, `created_at`, `updated_at`) VALUES
-(1, 'App\\Models\\User', 2, 'api-key', '138f2131ce66513453f47cc18c24087d29add4e6dfeecf15c7c64af505d33bae', '[\"*\"]', '2024-11-19 09:42:48', NULL, '2024-11-19 09:33:55', '2024-11-19 09:42:48');
+(1, 'App\\Models\\User', 2, 'api-key', '138f2131ce66513453f47cc18c24087d29add4e6dfeecf15c7c64af505d33bae', '[\"*\"]', '2024-11-21 10:22:56', NULL, '2024-11-19 09:33:55', '2024-11-21 10:22:56'),
+(2, 'App\\Models\\User', 2, 'api-key', 'b119874352ba679caaf75bc4270fabdfff2eb46745365b13674564fc410ab427', '[\"*\"]', '2024-11-21 08:54:39', NULL, '2024-11-21 08:53:04', '2024-11-21 08:54:39'),
+(3, 'App\\Models\\User', 2, 'api-key', '45524fc4b2aa231dc7488c57626a65c41da58859ae6bd2a1d7cb0285956f44a2', '[\"*\"]', '2024-11-21 08:55:05', NULL, '2024-11-21 08:54:53', '2024-11-21 08:55:05'),
+(4, 'App\\Models\\User', 2, 'api-key', '3e02419b8efea6da010222386242b7094f6c79ab5d9a1e68a21f2e335d92e7fa', '[\"*\"]', NULL, NULL, '2024-11-21 08:55:07', '2024-11-21 08:55:07'),
+(5, 'App\\Models\\User', 2, 'api-key', 'fd77d611a512bf29282d1bb4fcc546b6a924003cc3f6644f723a8504dfb461b1', '[\"*\"]', NULL, NULL, '2024-11-21 09:25:08', '2024-11-21 09:25:08'),
+(6, 'App\\Models\\User', 2, 'api-key', 'cd5507bd38830a69f0e0583f3185bb03272cc1ac235b074f30cdffc675b88cfd', '[\"*\"]', NULL, NULL, '2024-11-21 09:25:10', '2024-11-21 09:25:10'),
+(7, 'App\\Models\\User', 2, 'api-key', '75dbe69cb2b90ace988d19a1fa01b1092e44415d95eccf35d35eb5398db995c4', '[\"*\"]', NULL, NULL, '2024-11-21 09:25:11', '2024-11-21 09:25:11'),
+(8, 'App\\Models\\User', 2, 'api-key', 'd98b7e85f565aa02bc5307b1cef50e715882268237fa9552a6bebf5b43e63d3a', '[\"*\"]', NULL, NULL, '2024-11-21 09:25:12', '2024-11-21 09:25:12'),
+(9, 'App\\Models\\User', 2, 'api-key', '4098a519cfa1d33c6c94a307ac6b1ee30062a64d10ce030ab19c168afcac64e9', '[\"*\"]', NULL, NULL, '2024-11-21 09:25:13', '2024-11-21 09:25:13'),
+(10, 'App\\Models\\User', 2, 'api-key', 'fb28259fa3f8ddca47df09513556b1d07c00c40c27f3a0d02c5c827cfae217b7', '[\"*\"]', NULL, NULL, '2024-11-21 09:25:14', '2024-11-21 09:25:14'),
+(11, 'App\\Models\\User', 2, 'api-key', '2a4d9ff0ff0772d5e7b2dd187e0b8f69f72fe4a2e6cad82a3b0ded55f8f00ad6', '[\"*\"]', NULL, NULL, '2024-11-21 09:25:15', '2024-11-21 09:25:15'),
+(12, 'App\\Models\\User', 2, 'api-key', '9e4c23f9db0faf5bb4aa29aad03e874b5759f7e63b0a1feb6f8f6eaaf8a4d7cc', '[\"*\"]', NULL, NULL, '2024-11-21 09:25:15', '2024-11-21 09:25:15'),
+(13, 'App\\Models\\User', 2, 'api-key', 'dce4bdbcb3f357b66ff3a63f8699c5d0a39ce4d16dd016e92b314efe6d88aaaf', '[\"*\"]', NULL, NULL, '2024-11-21 09:25:16', '2024-11-21 09:25:16'),
+(14, 'App\\Models\\User', 2, 'api-key', '9fd39cef988f70bc030cfd9dce8e67225bc55570da3cb0ce260ed3e3fab08df1', '[\"*\"]', NULL, NULL, '2024-11-21 09:25:17', '2024-11-21 09:25:17'),
+(15, 'App\\Models\\User', 2, 'api-key', 'efae3ae09346dff9fb01d5c8e883fef2d9d5141fea1c65f64dd9658ec81021c8', '[\"*\"]', NULL, NULL, '2024-11-21 09:25:18', '2024-11-21 09:25:18'),
+(16, 'App\\Models\\User', 2, 'api-key', 'fb07a29c206fcb3ecd56c8be4731f7df28b5480645856b1914a7a7cf567823cb', '[\"*\"]', NULL, NULL, '2024-11-21 09:25:18', '2024-11-21 09:25:18'),
+(17, 'App\\Models\\User', 2, 'api-key', '2f62bc869b431b74001d3564638836f576624165f03d81887a85e0f99f0946ff', '[\"*\"]', NULL, NULL, '2024-11-21 09:25:19', '2024-11-21 09:25:19'),
+(18, 'App\\Models\\User', 2, 'api-key', '034b5754b64f72ca7756110af7d832715893f3dfad8d56d854c2d3ba79707ea6', '[\"*\"]', NULL, NULL, '2024-11-21 09:25:19', '2024-11-21 09:25:19'),
+(19, 'App\\Models\\User', 2, 'api-key', '828d78485b3d0163864aebaaae0ae97ee766167d26269ec24baa1903f4fefc2e', '[\"*\"]', NULL, NULL, '2024-11-21 09:25:22', '2024-11-21 09:25:22'),
+(20, 'App\\Models\\User', 2, 'api-key', 'e7945745641ef129f8b919a17fdf707b9c2df649d1f4f47803c647efeb5184fc', '[\"*\"]', NULL, NULL, '2024-11-21 09:25:58', '2024-11-21 09:25:58'),
+(21, 'App\\Models\\User', 2, 'api-key', '5693f3fa6a48237a3d1ceb3a8d33e60a93a8b6a7fcb729a6d4f197bf28bfd255', '[\"*\"]', '2024-11-21 10:54:22', NULL, '2024-11-21 09:26:59', '2024-11-21 10:54:22'),
+(22, 'App\\Models\\User', 2, 'api-key', 'd8728ff63f975e4a33ef258b769553dbe13231b1caaeff99db128b13980e08f2', '[\"*\"]', '2024-11-21 10:59:03', NULL, '2024-11-21 10:54:25', '2024-11-21 10:59:03'),
+(23, 'App\\Models\\User', 2, 'api-key', '3c8a23c8dc226917ebaa40ad15c9c34c113f6cb665bbdfbaa436ddb9580eafbb', '[\"*\"]', '2024-11-21 11:21:16', NULL, '2024-11-21 10:59:05', '2024-11-21 11:21:16'),
+(24, 'App\\Models\\User', 2, 'api-key', '81b48b7d419899f0afdaff07f2bacbfd87e0735a3b725d7c3e61ed17ce749df9', '[\"*\"]', '2024-11-21 11:26:43', NULL, '2024-11-21 11:21:21', '2024-11-21 11:26:43'),
+(25, 'App\\Models\\User', 2, 'api-key', '3c604aef35176dc0b8ce5a72176a4c7842d4f809599ad7f57d4c30848a945e4e', '[\"*\"]', '2024-11-21 11:26:49', NULL, '2024-11-21 11:26:47', '2024-11-21 11:26:49'),
+(26, 'App\\Models\\User', 2, 'api-key', '7c00e4b8daad3270f39d96cf5beda116376b98c54f605d6e7e42ede7e8ae9294', '[\"*\"]', '2024-11-21 11:29:36', NULL, '2024-11-21 11:27:41', '2024-11-21 11:29:36');
 
 -- --------------------------------------------------------
 
@@ -283,6 +329,13 @@ CREATE TABLE `productos` (
   `created_at` timestamp NULL DEFAULT CURRENT_TIMESTAMP,
   `updated_at` timestamp NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+--
+-- Dumping data for table `productos`
+--
+
+INSERT INTO `productos` (`id`, `nombre_producto`, `precio`, `stock`, `categoria_id`, `created_at`, `updated_at`) VALUES
+(1, 'VITAMINAS C', 25.99, 150, 1, '2024-11-21 04:10:17', '2024-11-21 04:10:17');
 
 -- --------------------------------------------------------
 
@@ -346,10 +399,13 @@ CREATE TABLE `sessions` (
 --
 
 INSERT INTO `sessions` (`id`, `user_id`, `ip_address`, `user_agent`, `payload`, `last_activity`) VALUES
+('0R0ydV2sG34QSwidKaS0RiI2xbwUnxxGMppIAx9P', NULL, '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/131.0.0.0 Safari/537.36 Edg/131.0.0.0', 'YTozOntzOjY6Il90b2tlbiI7czo0MDoiaUE2WWN0R25vVHJCS3kzd1lLaXpiTzhDQWdvZ3cwdGs4aXNUTWxnbSI7czo5OiJfcHJldmlvdXMiO2E6MTp7czozOiJ1cmwiO3M6Mjc6Imh0dHA6Ly8xMjcuMC4wLjE6ODAwMC9sb2dpbiI7fXM6NjoiX2ZsYXNoIjthOjI6e3M6Mzoib2xkIjthOjA6e31zOjM6Im5ldyI7YTowOnt9fX0=', 1732162124),
 ('2qRybm7hLuqXF1i6xSftRnO3SXmCuVBclFWU2dWS', NULL, '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/131.0.0.0 Safari/537.36 Edg/131.0.0.0', 'YTozOntzOjY6Il90b2tlbiI7czo0MDoiZDRsRXY5Q0VhbVpsTDNjeHhnYU1lNmJnamM0S3BuT055Z0ZYNmJoZiI7czo5OiJfcHJldmlvdXMiO2E6MTp7czozOiJ1cmwiO3M6MjE6Imh0dHA6Ly8xMjcuMC4wLjE6ODAwMCI7fXM6NjoiX2ZsYXNoIjthOjI6e3M6Mzoib2xkIjthOjA6e31zOjM6Im5ldyI7YTowOnt9fX0=', 1731984454),
 ('BRnHJk04s5Skdkq0LCc8sCHNc6gBIWoPChfAX5wp', NULL, '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/131.0.0.0 Safari/537.36 Edg/131.0.0.0', 'YTozOntzOjY6Il90b2tlbiI7czo0MDoiQ0tPalZTUUlIVWxpZHR4dkZIN1VrZXRhb1dFeXczbDVpcjlMVWZLZSI7czo5OiJfcHJldmlvdXMiO2E6MTp7czozOiJ1cmwiO3M6MjE6Imh0dHA6Ly8xMjcuMC4wLjE6ODAwMCI7fXM6NjoiX2ZsYXNoIjthOjI6e3M6Mzoib2xkIjthOjA6e31zOjM6Im5ldyI7YTowOnt9fX0=', 1731883449),
 ('eLK50dCOMmkF0mWkVIJvfIM5jLtIdfk64Fli9nUm', NULL, '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/131.0.0.0 Safari/537.36 Edg/131.0.0.0', 'YTozOntzOjY6Il90b2tlbiI7czo0MDoiZXNwMGpFZ1ppMTZPNjZQeFNsQjRRbUNaeDY2d3BRcWttOUdZY24xViI7czo5OiJfcHJldmlvdXMiO2E6MTp7czozOiJ1cmwiO3M6MjE6Imh0dHA6Ly8xMjcuMC4wLjE6ODAwMCI7fXM6NjoiX2ZsYXNoIjthOjI6e3M6Mzoib2xkIjthOjA6e31zOjM6Im5ldyI7YTowOnt9fX0=', 1731987144),
-('GfmZx24FcXBw0VG5rVSLYk1GN3r3asBMHSOXaujt', NULL, '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/131.0.0.0 Safari/537.36 Edg/131.0.0.0', 'YTozOntzOjY6Il90b2tlbiI7czo0MDoiYkkxOUdQdjZJMzBRVWY2R082UEZXdDJiSmsxbEJWREpNYlZhaHBEeCI7czo5OiJfcHJldmlvdXMiO2E6MTp7czozOiJ1cmwiO3M6MjE6Imh0dHA6Ly8xMjcuMC4wLjE6ODAwMCI7fXM6NjoiX2ZsYXNoIjthOjI6e3M6Mzoib2xkIjthOjA6e31zOjM6Im5ldyI7YTowOnt9fX0=', 1731879405);
+('GfmZx24FcXBw0VG5rVSLYk1GN3r3asBMHSOXaujt', NULL, '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/131.0.0.0 Safari/537.36 Edg/131.0.0.0', 'YTozOntzOjY6Il90b2tlbiI7czo0MDoiYkkxOUdQdjZJMzBRVWY2R082UEZXdDJiSmsxbEJWREpNYlZhaHBEeCI7czo5OiJfcHJldmlvdXMiO2E6MTp7czozOiJ1cmwiO3M6MjE6Imh0dHA6Ly8xMjcuMC4wLjE6ODAwMCI7fXM6NjoiX2ZsYXNoIjthOjI6e3M6Mzoib2xkIjthOjA6e31zOjM6Im5ldyI7YTowOnt9fX0=', 1731879405),
+('IvsWVpquAGBjahmDtsXaKDwPU71oIWNYTQWd21cT', NULL, '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/131.0.0.0 Safari/537.36 Edg/131.0.0.0', 'YTozOntzOjY6Il90b2tlbiI7czo0MDoiQ2xNN2dSZ1JEWDAzamc1UU5jSU9uWXNRMlByQ2E0Wk9oTFVYVjdhUiI7czo5OiJfcHJldmlvdXMiO2E6MTp7czozOiJ1cmwiO3M6MjE6Imh0dHA6Ly8xMjcuMC4wLjE6ODAwMCI7fXM6NjoiX2ZsYXNoIjthOjI6e3M6Mzoib2xkIjthOjA6e31zOjM6Im5ldyI7YTowOnt9fX0=', 1732061367),
+('VlXFdOgTQ8uUQ1xfHwCtSa8AEjsGxyqKdgPdIdxy', NULL, '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/131.0.0.0 Safari/537.36 Edg/131.0.0.0', 'YTozOntzOjY6Il90b2tlbiI7czo0MDoiU051VjNMM1BiNW1neFpZdFFlNUQzS3J5YnBMNjhIenlXSW5oaU1DUSI7czo5OiJfcHJldmlvdXMiO2E6MTp7czozOiJ1cmwiO3M6MjE6Imh0dHA6Ly8xMjcuMC4wLjE6ODAwMCI7fXM6NjoiX2ZsYXNoIjthOjI6e3M6Mzoib2xkIjthOjA6e31zOjM6Im5ldyI7YTowOnt9fX0=', 1732158585);
 
 -- --------------------------------------------------------
 
@@ -394,6 +450,13 @@ CREATE TABLE `ventas` (
   `created_at` timestamp NULL DEFAULT CURRENT_TIMESTAMP,
   `updated_at` timestamp NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+--
+-- Dumping data for table `ventas`
+--
+
+INSERT INTO `ventas` (`id`, `total_venta`, `fecha`, `cliente_id`, `empleado_id`, `tipo_pago`, `tipo_venta`, `estado_venta`, `created_at`, `updated_at`) VALUES
+(3, 25.99, '20/11/2024', 1, 1, 'CONTRAENTREGA', 'ENVIO', 'PENDIENTE', '2024-11-21 04:14:39', '2024-11-21 04:14:39');
 
 --
 -- Indexes for dumped tables
@@ -558,7 +621,7 @@ ALTER TABLE `categorias`
 -- AUTO_INCREMENT for table `clientes`
 --
 ALTER TABLE `clientes`
-  MODIFY `id` int NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `detalle_ordenes_pedido`
@@ -576,13 +639,13 @@ ALTER TABLE `detalle_venta`
 -- AUTO_INCREMENT for table `empleados`
 --
 ALTER TABLE `empleados`
-  MODIFY `id` int NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `envio`
 --
 ALTER TABLE `envio`
-  MODIFY `id` int NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `failed_jobs`
@@ -612,13 +675,13 @@ ALTER TABLE `ordenes_pedido`
 -- AUTO_INCREMENT for table `personal_access_tokens`
 --
 ALTER TABLE `personal_access_tokens`
-  MODIFY `id` bigint UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` bigint UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=27;
 
 --
 -- AUTO_INCREMENT for table `productos`
 --
 ALTER TABLE `productos`
-  MODIFY `id` int NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `proveedor`
@@ -642,7 +705,7 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `ventas`
 --
 ALTER TABLE `ventas`
-  MODIFY `id` int NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- Constraints for dumped tables
