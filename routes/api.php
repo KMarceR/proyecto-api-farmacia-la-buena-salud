@@ -13,6 +13,7 @@ use App\Http\Controllers\EnvioController;
 use App\Http\Controllers\OrdenesPedidoController;
 use App\Http\Controllers\ProductosController;
 use App\Http\Controllers\ProveedorController;
+use App\Http\Controllers\ReportesController;
 use App\Http\Controllers\RolesController;
 use App\Http\Controllers\VentasController;
 
@@ -93,7 +94,9 @@ Route::middleware('auth:sanctum')->group(function () {
     Route::delete('/roles/delete/{id}', [RolesController::class, 'delete']);
 
 
-
+    Route::get('/reporte_proveedores', [ReportesController::class, 'reporteProveedores']);
+    Route::get('/reporte_empleados', [ReportesController::class, 'reporteEmpleados']);
+    Route::get('/reporte_producto_mas_vendido', [ReportesController::class, 'reporteProductoMasVendido']);
     // Rutas para gestionar la tabla Pais
     // Route::get('/pais/select', [PaisController::class, 'select' ]);
 });
